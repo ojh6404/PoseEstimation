@@ -1,0 +1,17 @@
+[tool.ruff]
+line-length = 110
+target-version = "py38"
+exclude = [
+    "third_party",
+    "test",
+    ".eggs",
+    ".git",
+    ".ruff_cache",
+    "__pypackages__",
+    "build",
+    "dist",
+]
+
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "N", "B", "C4", "SIM"]

@@ -1,0 +1,13 @@
+.DS_Store
+.idea
+*.log
+.vscode
+tmp/
+*.egg-info
+__pycache__
+
+*.mp4
+*.pt
+*.pth
+*.onnx
+*.pyc

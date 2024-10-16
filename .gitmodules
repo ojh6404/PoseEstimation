@@ -1,0 +1,7 @@
+[submodule "third_party/FoundationPose"]
+	path = third_party/FoundationPose
+	url = https://github.com/ojh6404/FoundationPose.git
+	branch = noetic-patch
+[submodule "third_party/kaolin"]
+	path = third_party/kaolin
+	url = https://github.com/NVIDIAGameWorks/kaolin.git
