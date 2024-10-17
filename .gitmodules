@@ -5,3 +5,7 @@
 [submodule "third_party/kaolin"]
 	path = third_party/kaolin
 	url = https://github.com/NVIDIAGameWorks/kaolin.git
+[submodule "third_party/megapose6d"]
+	path = third_party/megapose6d
+	url = https://github.com/ojh6404/megapose6d.git
+	branch = patch
