@@ -9,6 +9,7 @@ from datareader import YcbineoatReader
 
 if __name__ == "__main__":
     import argparse
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--mesh_file", type=str)
     parser.add_argument("--test_scene_dir", type=str)
