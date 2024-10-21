@@ -34,6 +34,7 @@ webdataset
 omegaconf
 pypng
 Panda3D
+panda3d-gltf
 simplejson
 bokeh
 roma
@@ -67,3 +68,21 @@ warp-lang
 # For PyTorch3D
 fvcore
 iopath
+
+# Misc
+selenium
+line_profiler
+tqdm
+lxml
+transforms3d
+xarray
+pandas
+matplotlib
+plyfile
+ipdb
+pyarrow
+dt_apriltags
+structlog
+progressbar
+psutil
+torchgeometry
