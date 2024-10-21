@@ -48,6 +48,7 @@ class FoundationPoseEstimator(PoseEstimationWrapperBase):
         mesh_file: str,
         mask: np.ndarray,
         K: np.ndarray,
+        unit: str = "m",
         register_refine_iter: int = 5,
         track_refine_iter: int = 2,
         seed: int = 0,
@@ -75,20 +76,24 @@ class FoundationPoseEstimator(PoseEstimationWrapperBase):
         self._initialize(
             mesh_file=mesh_file,
             seed=seed,
+            unit=unit,
         )
 
-    def _initialize(self, mesh_file: str, seed: int = 0) -> None:
+    def _initialize(self, mesh_file: str, seed: int = 0, unit: str = "m") -> None:
         """
         Initialize Pose Estimation Model
 
         Args:
             mesh_file (str): Path to mesh file
             seed (int): Random seed
+            unit (str): Unit of the mesh, default is "m"
         """
 
         set_seed(seed)
 
         mesh = trimesh.load(mesh_file)
+        if unit == "mm":
+            mesh.apply_scale(1e-3)
         self.to_origin, self.extents = trimesh.bounds.oriented_bounds(mesh)
         self.bbox = np.stack([-self.extents / 2, self.extents / 2], axis=0).reshape(2, 3)
 
@@ -380,5 +385,3 @@ class FoundationPoseEstimator(PoseEstimationWrapperBase):
         )
 
         return center_pose, vis
-
-

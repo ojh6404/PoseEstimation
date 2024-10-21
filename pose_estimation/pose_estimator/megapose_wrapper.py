@@ -16,6 +16,7 @@ from pose_estimation.pose_estimator.wrapper_base import PoseEstimationWrapperBas
 
 logging.getLogger().setLevel(logging.WARNING)
 
+
 class MegaposeEstimator(PoseEstimationWrapperBase):
     """
     Pose Estimation Wrapper for Megapose
@@ -43,7 +44,6 @@ class MegaposeEstimator(PoseEstimationWrapperBase):
         self.K = K
         self.device = device
 
-
         self._initialize(
             model_name=model_name,
             mesh_file=mesh_file,
@@ -58,15 +58,13 @@ class MegaposeEstimator(PoseEstimationWrapperBase):
             seed (int): Random seed
         """
 
-        rigid_objects= [RigidObject(label="object", mesh_path=mesh_file, mesh_units="mm")] # TODO
+        rigid_objects = [RigidObject(label="object", mesh_path=mesh_file, mesh_units="mm")]  # TODO
         self.object_dataset = RigidObjectDataset(rigid_objects)
         self.model_info = NAMED_MODELS[model_name]
         if "cuda" in self.device:
             self.pose_estimator = load_named_model(model_name, self.object_dataset).cuda()
         else:
             self.pose_estimator = load_named_model(model_name, self.object_dataset)
-
-
 
     def predict(self, rgb: np.ndarray, bbox: np.ndarray, depth: Optional[np.ndarray] = None) -> np.ndarray:
         """
@@ -81,7 +79,7 @@ class MegaposeEstimator(PoseEstimationWrapperBase):
             np.ndarray: Pose in 4x4 matrix format
         """
 
-        detection = {'label': 'object', 'bbox_modal': bbox}
+        detection = {"label": "object", "bbox_modal": bbox}
         detection = [ObjectData.from_json(detection)]
         if "cuda" in self.device:
             detections = make_detections_from_object_data(detection).cuda()
